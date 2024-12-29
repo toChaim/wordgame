@@ -16,6 +16,7 @@ const WordListFilter = ({ filter, setFilter }) => {
             setFilter({ ...filter, pos: value })
           }
         >
+          <option value="">SELECT</option>
           {Object.entries(partsOfSpeech).map(([part, partObj]) => (
             <option key={part} value={part}>
               {part}
@@ -31,6 +32,7 @@ const WordListFilter = ({ filter, setFilter }) => {
             setFilter({ ...filter, level: value })
           }
         >
+          <option value="">SELECT</option>
           {levels.map((v) => (
             <option key={v} value={v}>
               {v}

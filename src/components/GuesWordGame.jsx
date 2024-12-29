@@ -1,26 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import { words } from '../data';
+
 import WordListFilter from './WordsListFilter';
+import { makeFilter, baseFilter } from '../helpers';
 
 const GuesWordGame = () => {
   const [word, setWord] = useState('');
   const [missing, setMissing] = useState(0);
   const [guess, setGuess] = useState('');
   const [success, setSuccess] = useState(null);
-  const [filter, setFilter] = useState({ pos: '', level: '' });
+  const [filter, setFilter] = useState(baseFilter);
 
-  const handleFilter = ([_, wordObj]) => {
-    const entries = Object.entries(filter);
-    if (entries.length === 0) {
-      return true;
-    }
-    return entries.every(([key, value]) =>
-      value ? wordObj[key].includes(value) : true,
-    );
-  };
   const getWord = () => {
     const choices = Object.entries(words)
-      .filter(handleFilter)
+      .filter(makeFilter(filter))
       .map(([key, value]) => key);
     const winner = choices[Math.floor(Math.random() * choices.length)];
     const index = Math.floor(Math.random() * winner.length);
@@ -29,6 +23,7 @@ const GuesWordGame = () => {
     setGuess('');
     setSuccess(null);
   };
+  useEffect(getWord, []);
 
   return (
     <div>
@@ -40,10 +35,15 @@ const GuesWordGame = () => {
       <button onClick={getWord}>Get Word</button>
       <div>
         <h1>
-          {word
-            .split('')
-            .map((c, i) => (i === missing ? guess || '_' : c))
-            .join('')}
+          {word.split('').map((c, i) =>
+            i === missing ? (
+              <span key={i} className="guess">
+                {guess || '_'}
+              </span>
+            ) : (
+              c
+            ),
+          )}
         </h1>
       </div>
       {word && (

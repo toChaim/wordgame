@@ -2,3 +2,17 @@
   margin: 0 auto;
   padding: 2rem;
 }
+nav {
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+}
+span {
+  margin: 5px;
+}
+.guess {
+  display: inline-block;
+  border: 1px solid plum;
+  margin: 0;
+  text-align: center;
+}
