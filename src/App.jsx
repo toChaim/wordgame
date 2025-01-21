@@ -2,9 +2,10 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 
 import Header from './components/Header';
 import WordList from './components/WordsList';
+import MissingLetterWordGame from './components/MissingLetterWordGame';
+import SightReadWordGame from './components/SightReadWordGame';
 
 import './App.css';
-import GuesWordGame from './components/GuesWordGame';
 
 const App = () => {
   return (
@@ -14,7 +15,11 @@ const App = () => {
       </Routes>
       <Routes>
         <Route path="/words" element={<WordList />} />
-        <Route path="/guesWordGame" element={<GuesWordGame />} />
+        <Route
+          path="/missingLetterWordGame"
+          element={<MissingLetterWordGame />}
+        />
+        <Route path="/sightReadWordGame" element={<SightReadWordGame />} />
       </Routes>
     </BrowserRouter>
   );

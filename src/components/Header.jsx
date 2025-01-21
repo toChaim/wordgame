@@ -6,7 +6,8 @@ const Header = () => {
       <h1>Word Games</h1>
       <nav>
         <NavLink to="/words">Words</NavLink>
-        <NavLink to="/guesWordGame">Gues Word Game</NavLink>
+        <NavLink to="/missingLetterWordGame">Missing Letter Game</NavLink>
+        <NavLink to="/sightReadWordGame">Sight Read Game</NavLink>
       </nav>
     </header>
   );
